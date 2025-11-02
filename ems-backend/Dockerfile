@@ -4,16 +4,20 @@ FROM openjdk:17-jdk-slim
 # Set working directory
 WORKDIR /app
 
-# Copy the Maven/Gradle files (whichever you’re using)
-COPY . .
+# Copy only necessary backend files into the container
+COPY mvnw .
+COPY .mvn .mvn
+COPY pom.xml .
+COPY src src
 
-# Build the app using Maven
+# Make mvnw executable
 RUN chmod +x mvnw
+
+# Build the app (skip tests for speed)
 RUN ./mvnw clean package -DskipTests
 
-
-# Expose port 10000 (Render will map this dynamically)
+# Expose port (change if needed)
 EXPOSE 10000
 
-# Run the Spring Boot jar
-CMD ["java", "-jar", "target/*.jar"]
+# Run the built Spring Boot jar
+CMD ["sh", "-c", "java -jar target/*.jar"]
