@@ -1,0 +1,18 @@
+body {
+  background-image: url('/mybackground.jpg'); /* replace with your image */
+  background-size: cover;       /* makes it fill the whole screen */
+  background-repeat: no-repeat; /* prevents repeating */
+  background-attachment: fixed; /* keeps it still when scrolling */
+  background-position: center;  /* centers the image */
+  color: white;                 /* optional, makes text readable */
+}
+.navbar-nav .nav-link {
+  font-size: 18px; /* adjust as needed */
+  font-weight: 500; /* makes it slightly bold */
+  color: white !important;
+}
+
+.navbar-brand {
+  font-size: 22px; /* Student Management System text */
+  font-weight: 600;
+}
