@@ -1,17 +1,17 @@
-# Use an official OpenJDK image as base
+# Use OpenJDK 17 as the base image
 FROM openjdk:17-jdk-slim
 
 # Set working directory
 WORKDIR /app
 
-# Copy everything
+# Copy the Maven/Gradle files (whichever you’re using)
 COPY . .
 
-# Package the Spring Boot app
+# Build the app using Maven
 RUN ./mvnw clean package -DskipTests
 
-# Expose the port your app runs on
-EXPOSE 8080
+# Expose port 10000 (Render will map this dynamically)
+EXPOSE 10000
 
-# Run the jar file
+# Run the Spring Boot jar
 CMD ["java", "-jar", "target/*.jar"]
