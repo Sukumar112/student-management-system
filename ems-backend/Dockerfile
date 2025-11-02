@@ -8,7 +8,9 @@ WORKDIR /app
 COPY . .
 
 # Build the app using Maven
+RUN chmod +x mvnw
 RUN ./mvnw clean package -DskipTests
+
 
 # Expose port 10000 (Render will map this dynamically)
 EXPOSE 10000
